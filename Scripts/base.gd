@@ -1,7 +1,10 @@
 extends Area2D
 
 var cultists : Array[bool]
-@export var cultist_sprites : Array[Sprite2D]
+@export var cultist_sprites : Array[AnimatedSprite2D]
+
+@export var cultist4_anim : AnimatedSprite2D
+@export var cultist5_anim : AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,15 +28,24 @@ func _on_area_entered(area):
 		return
 	if not cultists[line_death - 1]:
 		$GameOver.visible = true
-	elif cultists[3]:
+	elif cultists[3]:		
 		cultists[3] = false
-		cultist_sprites[3].visible = false		
+		cultist_sprites[3].play()
+		await cultist_sprites[3].animation_finished
+		cultist_sprites[3].queue_free()
+		#cultist_sprites[3].visible = false		
 	elif cultists[4]:
 		cultists[4] = false
-		cultist_sprites[4].visible = false
+		cultist_sprites[4].play()
+		await cultist_sprites[4].animation_finished
+		cultist_sprites[4].queue_free()
+		#cultist_sprites[4].visible = false
 	else:
-		cultists[line_death-1] = false
-		cultist_sprites[line_death-1].visible = false
+		cultists[line_death-1] = false		
+		cultist_sprites[line_death-1].play()
+		await cultist_sprites[line_death-1].animation_finished
+		cultist_sprites[line_death-1].queue_free()
+		#cultist_sprites[line_death-1].visible = false
 	
 	
 	

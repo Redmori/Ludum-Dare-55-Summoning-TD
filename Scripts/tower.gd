@@ -130,7 +130,9 @@ func _on_summon_1_mouse_entered():
 
 func _on_summon_1_mouse_exited():	
 	summon1.get_node("Sprite2D").self_modulate.b = 1
-	set_deferred("modulate.b", 1)
+	carrier.set_deferred("modulate.b", 1)
+	carrier.modulate.b = 1
+	
 
 
 func _on_summon_2_mouse_entered():
@@ -142,6 +144,7 @@ func _on_summon_2_mouse_entered():
 func _on_summon_2_mouse_exited():
 	summon2.get_node("Sprite2D").self_modulate.b = 1
 	set_deferred("modulate.b", 1)
+	carrier.modulate.b = 1
 
 
 func _on_summon_3_mouse_entered():
@@ -153,3 +156,4 @@ func _on_summon_3_mouse_entered():
 func _on_summon_3_mouse_exited():
 	summon3.get_node("Sprite2D").self_modulate.b = 1
 	set_deferred("modulate.b", 1)
+	carrier.modulate.b = 1
