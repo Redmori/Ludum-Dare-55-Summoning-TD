@@ -19,7 +19,7 @@ func _process(_delta):
 func indicate_tile(local_position):
 	var tile = local_to_map(local_position)
 	var tile_data = get_cell_tile_data(0,tile)
-	if Global.build_mode and tile_data and tile_data.get_custom_data("buildable"):
+	if Global.build_mode and tile_data and tile_data.get_custom_data("buildable") and Global.blood >= 10:
 		var local_pos = map_to_local(tile)
 		indicator.position = local_pos
 		indicator.visible = true

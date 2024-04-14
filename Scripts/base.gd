@@ -7,12 +7,16 @@ var cultists : Array[bool]
 func _ready():
 	Global.base = self
 	cultists = [true,true,true, true, true]
+	update_blood(Global.blood)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
 
+func update_blood(amount):
+	$Sprite2D.frame = min($Sprite2D.hframes-1 ,amount/10)
 
 func _on_area_entered(area):
 	area.get_parent().queue_free()
@@ -38,9 +42,8 @@ func set_wave(wave):
 	$WaveCounter.frame = wave - 1
 
 func _on_wave_manager_mouse_entered():
-	if Global.build_mode:
-		$WaveCounter.modulate.g = 0
-
+	if Global.build_mode:		
+		$WaveCounter.modulate.s = 0.3
 
 func _on_wave_manager_mouse_exited():
-	$WaveCounter.modulate.g = 1
+	$WaveCounter.modulate.s = 0

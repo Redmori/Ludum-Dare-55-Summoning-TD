@@ -14,12 +14,14 @@ var base : Area2D
 func pay(amount):
 	if blood - amount >= 0:
 		blood -= amount
+		base.update_blood(blood)
 		return true
 	else:
 		return false
 
 func earn(amount):
 	blood += amount
+	base.update_blood(blood)
 	#print(blood)
 
 func add_tower(new_tower):

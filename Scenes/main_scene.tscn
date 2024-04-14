@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/base.gd" id="5_twyjn"]
 [ext_resource type="Resource" uid="uid://b53dejrkpfguh" path="res://Resources/Waves/wave1.tres" id="6_koh35"]
 [ext_resource type="Resource" uid="uid://c72pynku30i7t" path="res://Resources/Waves/wave2.tres" id="7_wfsct"]
-[ext_resource type="Texture2D" uid="uid://djrqwviuows4q" path="res://Sprites/base.png" id="9_40d5k"]
+[ext_resource type="Texture2D" uid="uid://ll0aa8n1vdej" path="res://Sprites/base_fill.png" id="9_folpg"]
 [ext_resource type="Texture2D" uid="uid://dv243t0idohw0" path="res://Sprites/tutorial.png" id="10_nse6r"]
 [ext_resource type="Texture2D" uid="uid://umeak6oiy5n2" path="res://Sprites/wavenumber.png" id="11_8w5if"]
 [ext_resource type="Texture2D" uid="uid://ds7e3dn3nvvpr" path="res://Sprites/cultists.png" id="12_c4uaa"]
@@ -154,7 +154,9 @@ shape = SubResource("RectangleShape2D_twsgq")
 debug_color = Color(0.92549, 0.231373, 0.356863, 0.419608)
 
 [node name="Sprite2D" type="Sprite2D" parent="Base"]
-texture = ExtResource("9_40d5k")
+texture = ExtResource("9_folpg")
+hframes = 14
+frame = 3
 
 [node name="Tutorial3" type="Sprite2D" parent="Base"]
 visible = false
