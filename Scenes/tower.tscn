@@ -69,6 +69,7 @@ shape = SubResource("RectangleShape2D_kdkwq")
 texture = ExtResource("1_8yrbv")
 
 [node name="Tutorial" type="Sprite2D" parent="Summon3"]
+z_index = 3
 position = Vector2(33, -35)
 texture = ExtResource("4_xrtut")
 

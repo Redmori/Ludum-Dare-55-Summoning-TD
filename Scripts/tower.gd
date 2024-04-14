@@ -28,7 +28,7 @@ func _process(_delta):
 
 func sprite_flash():
 	var tween: Tween = create_tween() 
-	tween.tween_property(carrier, "modulate:v", 1, 0.75).from(15)
+	tween.tween_property(carrier, "modulate:v", 1, 0.075).from(15)
 	
 func fade_out(object):
 	var tween: Tween = create_tween() 
@@ -115,6 +115,7 @@ func _on_timer_timeout():
 
 
 func reset_highlights():
+	print("reset highlights")
 	summon1.get_node("Sprite2D").self_modulate.b = 1
 	summon2.get_node("Sprite2D").self_modulate.b = 1
 	summon3.get_node("Sprite2D").self_modulate.b = 1
@@ -124,11 +125,12 @@ func _on_summon_1_mouse_entered():
 	if carrier_loc == 0:
 		summon1.get_node("Sprite2D").self_modulate.b = 0
 		carrier.modulate.b = 0
+		print("set highlight")
 
 
 func _on_summon_1_mouse_exited():	
 	summon1.get_node("Sprite2D").self_modulate.b = 1
-	carrier.modulate.b = 1
+	set_deferred("modulate.b", 1)
 
 
 func _on_summon_2_mouse_entered():
@@ -139,7 +141,7 @@ func _on_summon_2_mouse_entered():
 
 func _on_summon_2_mouse_exited():
 	summon2.get_node("Sprite2D").self_modulate.b = 1
-	carrier.modulate.b = 1
+	set_deferred("modulate.b", 1)
 
 
 func _on_summon_3_mouse_entered():
@@ -150,4 +152,4 @@ func _on_summon_3_mouse_entered():
 
 func _on_summon_3_mouse_exited():
 	summon3.get_node("Sprite2D").self_modulate.b = 1
-	carrier.modulate.b = 1
+	set_deferred("modulate.b", 1)
