@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Wave" load_steps=3 format=3 uid="uid://c72pynku30i7t"]
+
+[ext_resource type="Script" path="res://Scripts/wave.gd" id="1_7jlxw"]
+[ext_resource type="Resource" uid="uid://k70232nk04or" path="res://Resources/Enemies/basic_enemy.tres" id="1_fh37h"]
+
+[resource]
+script = ExtResource("1_7jlxw")
+duration = 3.0
+path1_types = Array[Resource]([])
+path1_amounts = Array[int]([])
+path2_types = Array[Resource]([ExtResource("1_fh37h")])
+path2_amounts = Array[int]([2])
+path3_types = Array[Resource]([ExtResource("1_fh37h")])
+path3_amounts = Array[int]([3])

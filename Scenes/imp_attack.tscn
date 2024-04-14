@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4sq5sqg7xxkq"]
+
+[ext_resource type="Script" path="res://Scripts/imp_shot.gd" id="1_fwrhf"]
+[ext_resource type="PackedScene" uid="uid://bnsqod6vm5n2t" path="res://Scenes/imp_ball.tscn" id="2_gjsdb"]
+
+[node name="Attack" type="Node2D"]
+script = ExtResource("1_fwrhf")
+projectile = ExtResource("2_gjsdb")
+damage = 30
+cooldown = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

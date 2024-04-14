@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwmntks81lkk5"]
+
+[ext_resource type="Texture2D" uid="uid://b7t1i6tlilnky" path="res://Sprites/pentagram.png" id="1_8yrbv"]
+[ext_resource type="Script" path="res://Scenes/tower.gd" id="1_j8mxx"]
+[ext_resource type="PackedScene" uid="uid://dll3udxwivwht" path="res://Scenes/demon.tscn" id="2_8bmdd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdkwq"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7a8h"]
+size = Vector2(16, 16)
+
+[node name="Tower" type="Node2D" node_paths=PackedStringArray("carrier", "hell", "summon1", "summon2", "summon3")]
+script = ExtResource("1_j8mxx")
+carrier = NodePath("Hell/Carrier")
+hell = NodePath("Hell")
+summon1 = NodePath("Summon1")
+summon2 = NodePath("Summon2")
+summon3 = NodePath("Summon3")
+
+[node name="Hell" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hell"]
+shape = SubResource("RectangleShape2D_kdkwq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Hell"]
+texture = ExtResource("1_8yrbv")
+
+[node name="Carrier" type="Area2D" parent="Hell"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hell/Carrier"]
+shape = SubResource("RectangleShape2D_s7a8h")
+debug_color = Color(0.878431, 0.337255, 0.0627451, 0.419608)
+
+[node name="Demon" parent="Hell/Carrier" instance=ExtResource("2_8bmdd")]
+
+[node name="Summon1" type="Area2D" parent="."]
+position = Vector2(320, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Summon1"]
+shape = SubResource("RectangleShape2D_kdkwq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Summon1"]
+texture = ExtResource("1_8yrbv")
+
+[node name="Summon2" type="Area2D" parent="."]
+position = Vector2(0, 320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Summon2"]
+shape = SubResource("RectangleShape2D_kdkwq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Summon2"]
+texture = ExtResource("1_8yrbv")
+
+[node name="Summon3" type="Area2D" parent="."]
+position = Vector2(320, 320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Summon3"]
+shape = SubResource("RectangleShape2D_kdkwq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Summon3"]
+texture = ExtResource("1_8yrbv")
+
+[connection signal="input_event" from="Hell/Carrier" to="." method="_on_carrier_input_event"]
+[connection signal="input_event" from="Summon1" to="." method="_on_summon_1_input_event"]
+[connection signal="input_event" from="Summon2" to="." method="_on_summon_2_input_event"]
+[connection signal="input_event" from="Summon3" to="." method="_on_summon_3_input_event"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dll3udxwivwht"]
+
+[ext_resource type="Texture2D" uid="uid://c0ly8vkcf6oqa" path="res://Sprites/imp.png" id="1_dwvkq"]
+[ext_resource type="Script" path="res://Scripts/demon.gd" id="1_jprti"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_og1ma"]
+radius = 76.99
+
+[node name="Demon" type="Area2D" node_paths=PackedStringArray("attack")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_jprti")
+attack = NodePath("Attack")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dwvkq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_og1ma")
+
+[node name="Attack" type="Node2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
