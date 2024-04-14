@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwmntks81lkk5"]
+[gd_scene load_steps=8 format=3 uid="uid://dwmntks81lkk5"]
 
 [ext_resource type="Texture2D" uid="uid://b7t1i6tlilnky" path="res://Sprites/pentagram.png" id="1_8yrbv"]
 [ext_resource type="Script" path="res://Scripts/tower.gd" id="1_v4a7y"]
 [ext_resource type="PackedScene" uid="uid://dll3udxwivwht" path="res://Scenes/demon.tscn" id="2_8bmdd"]
 [ext_resource type="AudioStream" uid="uid://cxvpx51s0es5r" path="res://Sounds/summon.wav" id="4_qhy7w"]
+[ext_resource type="Texture2D" uid="uid://dv243t0idohw0" path="res://Sprites/tutorial.png" id="4_xrtut"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdkwq"]
 size = Vector2(16, 16)
@@ -67,6 +68,10 @@ shape = SubResource("RectangleShape2D_kdkwq")
 [node name="Sprite2D" type="Sprite2D" parent="Summon3"]
 texture = ExtResource("1_8yrbv")
 
+[node name="Tutorial" type="Sprite2D" parent="Summon3"]
+position = Vector2(33, -35)
+texture = ExtResource("4_xrtut")
+
 [node name="Audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_qhy7w")
 volume_db = -20.0
@@ -77,6 +82,12 @@ one_shot = true
 
 [connection signal="input_event" from="Hell/Carrier" to="." method="_on_carrier_input_event"]
 [connection signal="input_event" from="Summon1" to="." method="_on_summon_1_input_event"]
+[connection signal="mouse_entered" from="Summon1" to="." method="_on_summon_1_mouse_entered"]
+[connection signal="mouse_exited" from="Summon1" to="." method="_on_summon_1_mouse_exited"]
 [connection signal="input_event" from="Summon2" to="." method="_on_summon_2_input_event"]
+[connection signal="mouse_entered" from="Summon2" to="." method="_on_summon_2_mouse_entered"]
+[connection signal="mouse_exited" from="Summon2" to="." method="_on_summon_2_mouse_exited"]
 [connection signal="input_event" from="Summon3" to="." method="_on_summon_3_input_event"]
+[connection signal="mouse_entered" from="Summon3" to="." method="_on_summon_3_mouse_entered"]
+[connection signal="mouse_exited" from="Summon3" to="." method="_on_summon_3_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

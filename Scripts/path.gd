@@ -13,6 +13,8 @@ var timers : Array[float]
 var current_timers : Array[float]
 var enemy_amounts
 
+var line : int
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -43,6 +45,7 @@ func spawn(enemy_resource):
 	var new_enemy = walker.instantiate()
 	add_child(new_enemy)
 	new_enemy.set_stats(enemy_resource)
+	new_enemy.line = line
 	
 func spawning_done():
 	for i in enemy_amounts.size():

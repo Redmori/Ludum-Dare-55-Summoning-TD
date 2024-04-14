@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cifodnot66paj"
-path="res://.godot/imported/tileset.png-c259079e18121438fd392d302e3ca0d5.ctex"
+uid="uid://umeak6oiy5n2"
+path="res://.godot/imported/wavenumber.png-14678e5fabf1b236e8cd6c1904c65a8c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/tileset.png"
-dest_files=["res://.godot/imported/tileset.png-c259079e18121438fd392d302e3ca0d5.ctex"]
+source_file="res://Sprites/wavenumber.png"
+dest_files=["res://.godot/imported/wavenumber.png-14678e5fabf1b236e8cd6c1904c65a8c.ctex"]
 
 [params]
 

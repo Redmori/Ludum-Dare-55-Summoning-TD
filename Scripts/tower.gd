@@ -8,13 +8,18 @@ class_name Tower
 @export var summon2 : Area2D
 @export var summon3 : Area2D
 
+@onready var tutorial = $Summon3/Tutorial
+
 var carrier_loc = 0
 
 var interactable = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if Global.tutorial2_started or Global.tutorial2_done:
+		tutorial.queue_free()
+	else:
+		tutorial.visible = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,36 +35,33 @@ func fade_out(object):
 	tween.tween_property(object.get_node("Sprite2D"), "self_modulate", Color(1,1,1,0), 0.5) #, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 
 func _on_summon_1_input_event(_viewport, event, _shape_idx):
-	if interactable and Global.build_mode and event is InputEventMouseButton and event.is_pressed() and carrier_loc != 1:
-		print("parent to sum1")
+	if interactable and Global.build_mode and event is InputEventMouseButton and event.is_pressed() and carrier_loc == 0:
 		carrier.reparent(summon1,false)
-		hide_circles(true, 1)
-		if not $Audio.playing:
-			$Audio.play()
-		sprite_flash()
-		carrier_loc = 1
-		start_timer()
+		change_location(1)
 
 
 func _on_summon_2_input_event(_viewport, event, _shape_idx):
-	if interactable and Global.build_mode and event is InputEventMouseButton and event.is_pressed() and carrier_loc != 2:
+	if interactable and Global.build_mode and event is InputEventMouseButton and event.is_pressed() and carrier_loc == 0:
 		carrier.reparent(summon2,false)
-		hide_circles(true ,2)
-		if not $Audio.playing:
-			$Audio.play()
-		sprite_flash()
-		carrier_loc = 2
-		start_timer()
+		change_location(2)
 
 func _on_summon_3_input_event(_viewport, event, _shape_idx):
-	if interactable and Global.build_mode and event is InputEventMouseButton and event.is_pressed() and carrier_loc != 3:
+	if interactable and Global.build_mode and event is InputEventMouseButton and event.is_pressed() and carrier_loc == 0:
 		carrier.reparent(summon3,false)
-		hide_circles(true, 3)
+		change_location(3)
+
+func change_location(n):
+		hide_circles(true, n)
 		if not $Audio.playing:
 			$Audio.play()
 		sprite_flash()
-		carrier_loc = 3
+		carrier_loc = n
 		start_timer()
+		reset_highlights()
+		if tutorial != null and not Global.tutorial2_done:
+			tutorial.queue_free()
+			Global.do_tutorial2()
+		carrier.get_node("Demon").line = n
 
 func _on_carrier_input_event(_viewport, event, _shape_idx):
 	if interactable and Global.build_mode and event is InputEventMouseButton and event.is_pressed() and carrier_loc != 0:
@@ -68,6 +70,8 @@ func _on_carrier_input_event(_viewport, event, _shape_idx):
 			hide_circles(false, 0)
 			carrier_loc = 0
 			start_timer()
+			reset_highlights()
+			carrier.get_node("Demon").line = 0
 		#else:
 			##TODO: upgrade demon
 
@@ -76,6 +80,7 @@ func reset():
 		carrier.reparent(hell,false)
 		hide_circles(false, 0)
 		carrier_loc = 0
+		reset_highlights()
 		
 
 		
@@ -107,3 +112,42 @@ func start_timer():
 
 func _on_timer_timeout():
 	interactable = true
+
+
+func reset_highlights():
+	summon1.get_node("Sprite2D").self_modulate.b = 1
+	summon2.get_node("Sprite2D").self_modulate.b = 1
+	summon3.get_node("Sprite2D").self_modulate.b = 1
+	carrier.modulate.b = 1
+
+func _on_summon_1_mouse_entered():
+	if carrier_loc == 0:
+		summon1.get_node("Sprite2D").self_modulate.b = 0
+		carrier.modulate.b = 0
+
+
+func _on_summon_1_mouse_exited():	
+	summon1.get_node("Sprite2D").self_modulate.b = 1
+	carrier.modulate.b = 1
+
+
+func _on_summon_2_mouse_entered():
+	if carrier_loc == 0:
+		summon2.get_node("Sprite2D").self_modulate.b = 0
+		carrier.modulate.b = 0
+
+
+func _on_summon_2_mouse_exited():
+	summon2.get_node("Sprite2D").self_modulate.b = 1
+	carrier.modulate.b = 1
+
+
+func _on_summon_3_mouse_entered():
+	if carrier_loc == 0:
+		summon3.get_node("Sprite2D").self_modulate.b = 0
+		carrier.modulate.b = 0
+
+
+func _on_summon_3_mouse_exited():
+	summon3.get_node("Sprite2D").self_modulate.b = 1
+	carrier.modulate.b = 1
