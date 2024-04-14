@@ -8,6 +8,7 @@ var path1_done = true
 var path2_done = true
 var path3_done = true
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#send_wave()
@@ -38,6 +39,7 @@ func check_done():
 		wave_number += 1
 		fully_done = true
 		Global.build_mode = true
+		Global.end_wave()
 
 func _on_path_1_child_exiting_tree(node):
 	if $Path1.spawning_done() and $Path1.get_children().size() == 1:

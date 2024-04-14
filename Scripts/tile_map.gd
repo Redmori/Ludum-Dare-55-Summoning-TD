@@ -33,6 +33,7 @@ func _input(event):
 				var new_tower = tower.instantiate()
 				add_child(new_tower)
 				new_tower.position = local_pos
+				Global.add_tower(new_tower)
 		elif Input.is_action_pressed("Destroy") and indicator.visible and indicator.get_overlapping_areas():
 			for area in indicator.get_overlapping_areas():
 				if area.get_parent() is Tower:

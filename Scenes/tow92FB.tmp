@@ -72,7 +72,7 @@ stream = ExtResource("4_qhy7w")
 volume_db = -20.0
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.2
 one_shot = true
 
 [connection signal="input_event" from="Hell/Carrier" to="." method="_on_carrier_input_event"]
