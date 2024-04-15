@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dll3udxwivwht"]
 
-[ext_resource type="Texture2D" uid="uid://c0ly8vkcf6oqa" path="res://Sprites/imp.png" id="1_dwvkq"]
 [ext_resource type="Script" path="res://Scripts/demon.gd" id="1_jprti"]
+[ext_resource type="SpriteFrames" uid="uid://d1etvetb8hqax" path="res://Resources/Demons/Animations/imp_animation.tres" id="2_0m2ff"]
 [ext_resource type="PackedScene" uid="uid://b4sq5sqg7xxkq" path="res://Scenes/imp_attack.tscn" id="3_odkkg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_og1ma"]
@@ -12,8 +12,9 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_jprti")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_dwvkq")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_0m2ff")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_og1ma")
