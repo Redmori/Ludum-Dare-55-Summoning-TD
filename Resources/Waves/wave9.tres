@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Wave" load_steps=3 format=3 uid="uid://co2wcwvfj7yhq"]
+
+[ext_resource type="Resource" uid="uid://o88dd873x0ac" path="res://Resources/Enemies/slow_enemy.tres" id="3_o87my"]
+[ext_resource type="Script" path="res://Scripts/wave.gd" id="4_4r1a6"]
+
+[resource]
+script = ExtResource("4_4r1a6")
+duration = 4.0
+reward = 10
+path1_types = Array[Resource]([ExtResource("3_o87my")])
+path1_amounts = Array[int]([2])
+path2_types = Array[Resource]([ExtResource("3_o87my")])
+path2_amounts = Array[int]([2])
+path3_types = Array[Resource]([ExtResource("3_o87my")])
+path3_amounts = Array[int]([2])

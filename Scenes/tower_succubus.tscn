@@ -1,0 +1,138 @@
+[gd_scene load_steps=10 format=3 uid="uid://baobgqw7ynxyc"]
+
+[ext_resource type="Script" path="res://Scripts/tower.gd" id="1_sltmt"]
+[ext_resource type="Texture2D" uid="uid://b7t1i6tlilnky" path="res://Sprites/pentagram.png" id="2_mc123"]
+[ext_resource type="PackedScene" uid="uid://dthh3n52tkgdh" path="res://Scenes/demon_succubus.tscn" id="3_44bs7"]
+[ext_resource type="Script" path="res://Scripts/upgrade.gd" id="4_m735r"]
+[ext_resource type="PackedScene" uid="uid://c0ewap7n1lwrn" path="res://Scenes/tower_balrog.tscn" id="5_i7a5d"]
+[ext_resource type="Texture2D" uid="uid://cwrx6xvtlb2d7" path="res://Sprites/succ_summ.png" id="6_cmtcc"]
+[ext_resource type="AudioStream" uid="uid://cxvpx51s0es5r" path="res://Sounds/summon.wav" id="6_iqis7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdkwq"]
+size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7a8h"]
+size = Vector2(16, 32)
+
+[node name="Tower" type="Node2D" node_paths=PackedStringArray("carrier", "hell", "summon1", "summon2", "summon3")]
+script = ExtResource("1_sltmt")
+carrier = NodePath("Hell/Carrier")
+hell = NodePath("Hell")
+summon1 = NodePath("Summon1")
+summon2 = NodePath("Summon2")
+summon3 = NodePath("Summon3")
+
+[node name="Hell" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hell"]
+shape = SubResource("RectangleShape2D_kdkwq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Hell"]
+visible = false
+scale = Vector2(2, 1)
+texture = ExtResource("2_mc123")
+
+[node name="Carrier" type="Area2D" parent="Hell"]
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hell/Carrier"]
+z_index = 1
+shape = SubResource("RectangleShape2D_s7a8h")
+debug_color = Color(0.878431, 0.337255, 0.0627451, 0.419608)
+
+[node name="Demon" parent="Hell/Carrier" instance=ExtResource("3_44bs7")]
+
+[node name="Upgr3" type="Area2D" parent="Hell"]
+position = Vector2(-8, 0)
+script = ExtResource("4_m735r")
+upgrade_tower = ExtResource("5_i7a5d")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Hell/Upgr3"]
+position = Vector2(-8, 0)
+polygon = PackedVector2Array(0, -8, 8, -15, 8, 15, 0, 8)
+
+[node name="ReferenceRect" type="ReferenceRect" parent="Hell/Upgr3"]
+visible = false
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 2
+border_color = Color(1, 1, 1, 1)
+editor_only = false
+
+[node name="Upgr4" type="Area2D" parent="Hell"]
+position = Vector2(8, 0)
+script = ExtResource("4_m735r")
+upgrade_tower = ExtResource("5_i7a5d")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Hell/Upgr4"]
+position = Vector2(8, 0)
+polygon = PackedVector2Array(0, -8, -8, -15, -8, 15, 0, 8)
+
+[node name="ReferenceRect" type="ReferenceRect" parent="Hell/Upgr4"]
+visible = false
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 2
+border_color = Color(1, 1, 1, 1)
+editor_only = false
+
+[node name="Summon1" type="Area2D" parent="."]
+position = Vector2(240, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Summon1"]
+shape = SubResource("RectangleShape2D_kdkwq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Summon1"]
+texture = ExtResource("6_cmtcc")
+
+[node name="Summon2" type="Area2D" parent="."]
+position = Vector2(0, 144)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Summon2"]
+shape = SubResource("RectangleShape2D_kdkwq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Summon2"]
+texture = ExtResource("6_cmtcc")
+
+[node name="Node2D" type="Node2D" parent="Summon2"]
+
+[node name="Summon3" type="Area2D" parent="."]
+position = Vector2(240, 144)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Summon3"]
+shape = SubResource("RectangleShape2D_kdkwq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Summon3"]
+texture = ExtResource("6_cmtcc")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_iqis7")
+volume_db = -20.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="input_event" from="Hell/Carrier" to="." method="_on_carrier_input_event"]
+[connection signal="area_entered" from="Hell/Upgr3" to="Hell/Upgr3" method="_on_area_entered"]
+[connection signal="input_event" from="Hell/Upgr3" to="Hell/Upgr3" method="_on_input_event"]
+[connection signal="mouse_entered" from="Hell/Upgr3" to="Hell/Upgr3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Hell/Upgr3" to="Hell/Upgr3" method="_on_mouse_exited"]
+[connection signal="area_entered" from="Hell/Upgr4" to="Hell/Upgr4" method="_on_area_entered"]
+[connection signal="input_event" from="Hell/Upgr4" to="Hell/Upgr4" method="_on_input_event"]
+[connection signal="mouse_entered" from="Hell/Upgr4" to="Hell/Upgr4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Hell/Upgr4" to="Hell/Upgr4" method="_on_mouse_exited"]
+[connection signal="input_event" from="Summon1" to="." method="_on_summon_1_input_event"]
+[connection signal="mouse_entered" from="Summon1" to="." method="_on_summon_1_mouse_entered"]
+[connection signal="mouse_exited" from="Summon1" to="." method="_on_summon_1_mouse_exited"]
+[connection signal="input_event" from="Summon2" to="." method="_on_summon_2_input_event"]
+[connection signal="mouse_entered" from="Summon2" to="." method="_on_summon_2_mouse_entered"]
+[connection signal="mouse_exited" from="Summon2" to="." method="_on_summon_2_mouse_exited"]
+[connection signal="input_event" from="Summon3" to="." method="_on_summon_3_input_event"]
+[connection signal="mouse_entered" from="Summon3" to="." method="_on_summon_3_mouse_entered"]
+[connection signal="mouse_exited" from="Summon3" to="." method="_on_summon_3_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

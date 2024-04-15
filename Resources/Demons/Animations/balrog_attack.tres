@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://cbtyxuyuib3i"]
+
+[ext_resource type="Texture2D" uid="uid://dpymowks5uvnx" path="res://Sprites/balrog_attack.png" id="1_0rf67"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2agq"]
+atlas = ExtResource("1_0rf67")
+region = Rect2(16, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyqub"]
+atlas = ExtResource("1_0rf67")
+region = Rect2(32, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcbxv"]
+atlas = ExtResource("1_0rf67")
+region = Rect2(48, 0, 16, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2agq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyqub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcbxv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

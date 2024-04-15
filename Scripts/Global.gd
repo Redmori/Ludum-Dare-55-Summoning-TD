@@ -1,7 +1,7 @@
 extends Node
 
 var wave = 1
-var blood = 35
+var blood = 10
 var build_mode = true
 
 var tutorial2_started = false
@@ -28,6 +28,9 @@ func add_tower(new_tower):
 	towers.append(new_tower)
 	if not tutorial2_started and towers.size() == 1:
 		tutorial2_started = true
+		
+func remove_tower(tower):
+	towers.erase(tower)
 	
 func end_wave(number):
 	wave = number

@@ -3,6 +3,7 @@ extends Resource
 class_name Wave
 
 @export var duration : float
+@export var reward: int
 
 @export var path1_types : Array[Resource]
 @export var path1_amounts : Array[int]

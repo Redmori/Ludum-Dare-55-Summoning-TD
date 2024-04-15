@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0ewap7n1lwrn"]
+
+[ext_resource type="Script" path="res://Scripts/tower.gd" id="1_47gj2"]
+[ext_resource type="Texture2D" uid="uid://b7t1i6tlilnky" path="res://Sprites/pentagram.png" id="2_k08ty"]
+[ext_resource type="PackedScene" uid="uid://d4tojvsspd4j" path="res://Scenes/demon_balrog.tscn" id="3_6nsit"]
+[ext_resource type="Texture2D" uid="uid://e5uy1u7vte02" path="res://Sprites/balrog_sum.png" id="4_gm050"]
+[ext_resource type="AudioStream" uid="uid://cxvpx51s0es5r" path="res://Sounds/summon.wav" id="4_uem38"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdkwq"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7a8h"]
+size = Vector2(32, 32)
+
+[node name="Tower" type="Node2D" node_paths=PackedStringArray("carrier", "hell", "summon1", "summon2", "summon3")]
+script = ExtResource("1_47gj2")
+carrier = NodePath("Hell/Carrier")
+hell = NodePath("Hell")
+summon1 = NodePath("Summon1")
+summon2 = NodePath("Summon2")
+summon3 = NodePath("Summon3")
+
+[node name="Hell" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hell"]
+shape = SubResource("RectangleShape2D_kdkwq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Hell"]
+visible = false
+scale = Vector2(2, 1)
+texture = ExtResource("2_k08ty")
+
+[node name="Carrier" type="Area2D" parent="Hell"]
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hell/Carrier"]
+z_index = 1
+shape = SubResource("RectangleShape2D_s7a8h")
+debug_color = Color(0.878431, 0.337255, 0.0627451, 0.419608)
+
+[node name="Demon" parent="Hell/Carrier" instance=ExtResource("3_6nsit")]
+
+[node name="Summon1" type="Area2D" parent="."]
+position = Vector2(240, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Summon1"]
+shape = SubResource("RectangleShape2D_kdkwq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Summon1"]
+texture = ExtResource("4_gm050")
+
+[node name="Summon2" type="Area2D" parent="."]
+position = Vector2(0, 144)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Summon2"]
+shape = SubResource("RectangleShape2D_kdkwq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Summon2"]
+texture = ExtResource("4_gm050")
+
+[node name="Node2D" type="Node2D" parent="Summon2"]
+
+[node name="Summon3" type="Area2D" parent="."]
+position = Vector2(240, 144)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Summon3"]
+shape = SubResource("RectangleShape2D_kdkwq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Summon3"]
+texture = ExtResource("4_gm050")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_uem38")
+volume_db = -20.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="input_event" from="Hell/Carrier" to="." method="_on_carrier_input_event"]
+[connection signal="input_event" from="Summon1" to="." method="_on_summon_1_input_event"]
+[connection signal="mouse_entered" from="Summon1" to="." method="_on_summon_1_mouse_entered"]
+[connection signal="mouse_exited" from="Summon1" to="." method="_on_summon_1_mouse_exited"]
+[connection signal="input_event" from="Summon2" to="." method="_on_summon_2_input_event"]
+[connection signal="mouse_entered" from="Summon2" to="." method="_on_summon_2_mouse_entered"]
+[connection signal="mouse_exited" from="Summon2" to="." method="_on_summon_2_mouse_exited"]
+[connection signal="input_event" from="Summon3" to="." method="_on_summon_3_input_event"]
+[connection signal="mouse_entered" from="Summon3" to="." method="_on_summon_3_mouse_entered"]
+[connection signal="mouse_exited" from="Summon3" to="." method="_on_summon_3_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

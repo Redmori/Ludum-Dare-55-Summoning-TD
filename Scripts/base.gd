@@ -28,6 +28,8 @@ func _on_area_entered(area):
 		return
 	if not cultists[line_death - 1]:
 		$GameOver.visible = true
+		await get_tree().create_timer(10).timeout
+		get_tree().reload_current_scene()
 	elif cultists[3]:		
 		cultists[3] = false
 		cultist_sprites[3].play()

@@ -1,0 +1,60 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://b54vmojmqhf7q"]
+
+[ext_resource type="Texture2D" uid="uid://7r1j25m3i6jl" path="res://Sprites/hound_attack.png" id="1_ift68"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3ya5"]
+atlas = ExtResource("1_ift68")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xmdx"]
+atlas = ExtResource("1_ift68")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2gj3"]
+atlas = ExtResource("1_ift68")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ukws"]
+atlas = ExtResource("1_ift68")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wt77d"]
+atlas = ExtResource("1_ift68")
+region = Rect2(128, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yt60"]
+atlas = ExtResource("1_ift68")
+region = Rect2(160, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6g4w"]
+atlas = ExtResource("1_ift68")
+region = Rect2(192, 0, 32, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3ya5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xmdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2gj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ukws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wt77d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yt60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6g4w")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]

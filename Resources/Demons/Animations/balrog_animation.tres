@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://crb41s6gde3hb"]
+
+[ext_resource type="Texture2D" uid="uid://ddtea2dam24ml" path="res://Sprites/balrog.png" id="1_lhilk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwqf8"]
+atlas = ExtResource("1_lhilk")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwqf8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

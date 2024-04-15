@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Wave" load_steps=5 format=3 uid="uid://cc5250l0cavrq"]
+
+[ext_resource type="Resource" uid="uid://o88dd873x0ac" path="res://Resources/Enemies/slow_enemy.tres" id="1_kyi2t"]
+[ext_resource type="Script" path="res://Scripts/wave.gd" id="2_gi5sd"]
+[ext_resource type="Resource" uid="uid://k70232nk04or" path="res://Resources/Enemies/basic_enemy.tres" id="2_qfagb"]
+[ext_resource type="Resource" uid="uid://c5hdi8wr2o3ue" path="res://Resources/Enemies/fast_enemy.tres" id="3_ntdte"]
+
+[resource]
+script = ExtResource("2_gi5sd")
+duration = 15.0
+reward = 10
+path1_types = Array[Resource]([ExtResource("1_kyi2t"), ExtResource("2_qfagb"), ExtResource("3_ntdte")])
+path1_amounts = Array[int]([4, 10, 5])
+path2_types = Array[Resource]([ExtResource("1_kyi2t"), ExtResource("2_qfagb"), ExtResource("3_ntdte")])
+path2_amounts = Array[int]([4, 5, 10])
+path3_types = Array[Resource]([ExtResource("1_kyi2t"), ExtResource("2_qfagb"), ExtResource("3_ntdte")])
+path3_amounts = Array[int]([4, 8, 8])

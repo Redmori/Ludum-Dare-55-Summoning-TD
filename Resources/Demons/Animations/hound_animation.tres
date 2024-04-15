@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://djqe6f325qj73"]
+
+[ext_resource type="Texture2D" uid="uid://chpvar3vli15r" path="res://Sprites/hellhound.png" id="1_emykb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bm4bv"]
+atlas = ExtResource("1_emykb")
+region = Rect2(0, 0, 32, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bm4bv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

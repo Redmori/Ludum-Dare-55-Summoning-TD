@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4tojvsspd4j"]
+
+[ext_resource type="Script" path="res://Scripts/demon.gd" id="1_h3ucd"]
+[ext_resource type="SpriteFrames" uid="uid://crb41s6gde3hb" path="res://Resources/Demons/Animations/balrog_animation.tres" id="2_x1he2"]
+[ext_resource type="PackedScene" uid="uid://bfgf40iieq6m2" path="res://Scenes/attack_balrog.tscn" id="3_6owwl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_og1ma"]
+radius = 76.99
+
+[node name="Demon" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_h3ucd")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_x1he2")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_og1ma")
+
+[node name="Attack" parent="." instance=ExtResource("3_6owwl")]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

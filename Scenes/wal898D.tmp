@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsm2k8u38xd03"]
+
+[ext_resource type="Script" path="res://Scripts/walker.gd" id="1_6db6x"]
+[ext_resource type="PackedScene" uid="uid://t41imtruyd3w" path="res://Scenes/enemy.tscn" id="2_r17xv"]
+
+[node name="Walker" type="PathFollow2D"]
+z_index = 1
+position = Vector2(424, 295)
+rotates = false
+loop = false
+script = ExtResource("1_6db6x")
+speed = null
+
+[node name="Enemy" parent="." instance=ExtResource("2_r17xv")]
+
+[node name="_Timer_112741" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true

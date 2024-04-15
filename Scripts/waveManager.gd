@@ -14,6 +14,7 @@ func _ready():
 	$Path1.line = 3
 	$Path2.line = 1
 	$Path3.line = 2
+	display_predictions()
 	pass
 
 func send_wave():
@@ -26,6 +27,7 @@ func send_wave():
 	fully_done = false
 	if not Global.tutorial3_done:
 		Global.do_tutorial3()
+	hide_predictions()
 	if waves[wave_number -1].path1_types.size() > 0:
 		$Path1.assign_wave(waves[wave_number-1].duration, waves[wave_number-1].path1_types, waves[wave_number-1].path1_amounts)
 		path1_done = false
@@ -43,10 +45,58 @@ func _input(event):
 
 func check_done():
 	if path1_done and path2_done and path3_done:
+		Global.earn(waves[wave_number -1].reward)
 		wave_number += 1
 		fully_done = true
 		Global.build_mode = true
 		Global.end_wave(wave_number)
+		display_predictions()
+
+func display_predictions():
+	if wave_number > waves.size():
+		return
+	if waves[wave_number - 1].path1_types.size() > 0:
+		$arrow_1.visible = true
+		for type in waves[wave_number - 1].path1_types:
+			if type.name == "Speedy":
+				$fast_1.visible = true
+			if type.name == "Dude":
+				$basic_1.visible = true
+			if type.name == "Fatty":
+				$slow_1.visible = true
+	if waves[wave_number - 1].path2_types.size() > 0:
+		$arrow_2.visible = true
+		for type in waves[wave_number - 1].path2_types:
+			if type.name == "Speedy":
+				$fast_2.visible = true
+			if type.name == "Dude":
+				$basic_2.visible = true
+			if type.name == "Fatty":
+				$slow_2.visible = true
+	if waves[wave_number - 1].path3_types.size() > 0:
+		$arrow_3.visible = true
+		for type in waves[wave_number - 1].path3_types:
+			if type.name == "Speedy":
+				$fast_3.visible = true
+			if type.name == "Dude":
+				$basic_3.visible = true
+			if type.name == "Fatty":
+				$slow_3.visible = true
+			
+
+func hide_predictions():
+	$arrow_1.visible = false
+	$arrow_2.visible = false
+	$arrow_3.visible = false
+	$fast_1.visible = false
+	$fast_2.visible = false
+	$fast_3.visible = false
+	$basic_1.visible = false
+	$basic_2.visible = false
+	$basic_3.visible = false
+	$slow_1.visible = false
+	$slow_2.visible = false
+	$slow_3.visible = false
 
 func _on_path_1_child_exiting_tree(node):
 	if $Path1.spawning_done() and $Path1.get_children().size() == 1:

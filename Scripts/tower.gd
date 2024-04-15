@@ -8,19 +8,48 @@ class_name Tower
 @export var summon2 : Area2D
 @export var summon3 : Area2D
 
-@onready var tutorial = $Summon3/Tutorial
+@export var tutorial : Node2D
 
 var carrier_loc = 0
 
 var interactable = true
 
+var upgrade_level = 1
+var open_upgrades
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if Global.tutorial2_started or Global.tutorial2_done:
-		tutorial.queue_free()
-	else:
-		tutorial.visible = true
+	if tutorial:
+		if Global.tutorial2_started or Global.tutorial2_done:
+			tutorial.queue_free()
+		else:
+			tutorial.visible = true
+			
 
+func set_upgrades(upgr):
+	open_upgrades = upgr
+	
+	if upgrade_level == 1:
+		if not upgr[3]:
+			get_node("Hell").get_node("Upgr3").queue_free()
+		if not upgr[4]:
+			get_node("Hell").get_node("Upgr4").queue_free()
+		if not upgr[1]:
+			get_node("Hell").get_node("Upgr1").queue_free()
+		if not upgr[6]:
+			get_node("Hell").get_node("Upgr6").queue_free()
+	elif upgrade_level == 2:
+		if not upgr[1]:
+			get_node("Hell").get_node("Upgr1").queue_free()
+		if not upgr[6]:
+			print("delete down")
+			get_node("Hell").get_node("Upgr6").queue_free()
+	elif upgrade_level == 3:
+		if not upgr[3]:
+			get_node("Hell").get_node("Upgr3").queue_free()
+		if not upgr[4]:
+			get_node("Hell").get_node("Upgr4").queue_free()
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -115,7 +144,6 @@ func _on_timer_timeout():
 
 
 func reset_highlights():
-	print("reset highlights")
 	summon1.get_node("Sprite2D").self_modulate.b = 1
 	summon2.get_node("Sprite2D").self_modulate.b = 1
 	summon3.get_node("Sprite2D").self_modulate.b = 1
@@ -125,7 +153,6 @@ func _on_summon_1_mouse_entered():
 	if carrier_loc == 0:
 		summon1.get_node("Sprite2D").self_modulate.b = 0
 		carrier.modulate.b = 0
-		print("set highlight")
 
 
 func _on_summon_1_mouse_exited():	

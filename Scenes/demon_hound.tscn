@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://6h3nigx47j6c"]
+
+[ext_resource type="Script" path="res://Scripts/demon.gd" id="1_dyscu"]
+[ext_resource type="SpriteFrames" uid="uid://djqe6f325qj73" path="res://Resources/Demons/Animations/hound_animation.tres" id="2_o632u"]
+[ext_resource type="PackedScene" uid="uid://d0g2oqbdvtlid" path="res://Scenes/attack_hound.tscn" id="3_20moh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_og1ma"]
+radius = 40.0
+
+[node name="Demon" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_dyscu")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_o632u")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_og1ma")
+
+[node name="Attack" parent="." instance=ExtResource("3_20moh")]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
