@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0g2oqbdvtlid"]
+[gd_scene load_steps=5 format=3 uid="uid://d0g2oqbdvtlid"]
 
 [ext_resource type="Script" path="res://Scripts/attack_hound.gd" id="1_wj3yw"]
 [ext_resource type="SpriteFrames" uid="uid://b54vmojmqhf7q" path="res://Resources/Demons/Animations/hound_attack.tres" id="2_4q5jv"]
+[ext_resource type="AudioStream" uid="uid://dm7nis0qcxeql" path="res://Sounds/bite.wav" id="3_bv6g5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0may"]
 size = Vector2(27, 16)
@@ -15,6 +16,7 @@ cooldown = 0.7
 autostart = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
 sprite_frames = ExtResource("2_4q5jv")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -25,5 +27,9 @@ collision_mask = 2
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_p0may")
 debug_color = Color(0.882353, 0.337255, 0, 0.419608)
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_bv6g5")
+volume_db = -20.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

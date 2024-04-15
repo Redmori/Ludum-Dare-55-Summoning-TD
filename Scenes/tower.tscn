@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dwmntks81lkk5"]
+[gd_scene load_steps=12 format=3 uid="uid://dwmntks81lkk5"]
 
 [ext_resource type="Texture2D" uid="uid://b7t1i6tlilnky" path="res://Sprites/pentagram.png" id="1_8yrbv"]
 [ext_resource type="Script" path="res://Scripts/tower.gd" id="1_v4a7y"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dv243t0idohw0" path="res://Sprites/tutorial.png" id="4_xrtut"]
 [ext_resource type="PackedScene" uid="uid://baobgqw7ynxyc" path="res://Scenes/tower_succubus.tscn" id="5_imkq0"]
 [ext_resource type="PackedScene" uid="uid://7nier2s8l8qk" path="res://Scenes/tower_hound.tscn" id="5_qopfj"]
+[ext_resource type="AudioStream" uid="uid://medwmvd6dtxp" path="res://Sounds/place.wav" id="9_mxcml"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdkwq"]
 size = Vector2(16, 16)
@@ -160,6 +161,11 @@ volume_db = -20.0
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="AudioReady" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_mxcml")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="input_event" from="Hell/Carrier" to="." method="_on_carrier_input_event"]
 [connection signal="area_entered" from="Hell/Upgr1" to="Hell/Upgr1" method="_on_area_entered"]

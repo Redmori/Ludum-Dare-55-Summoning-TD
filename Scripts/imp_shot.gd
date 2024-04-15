@@ -9,5 +9,6 @@ func do_attack(target):
 	add_child(new_projectile)
 	new_projectile.target = target
 	new_projectile.damage = damage
+	$Audio.play()
 	#target.damage(30)
 

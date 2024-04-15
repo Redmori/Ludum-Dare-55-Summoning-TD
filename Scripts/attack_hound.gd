@@ -17,6 +17,8 @@ func do_attack(target):
 	current_target = target
 	$AnimatedSprite2D.play()
 	$AnimatedSprite2D.global_position = target.global_position
+	$Area2D.global_position = current_target.global_position
+	$Audio.play()
 	var hits = $Area2D.get_overlapping_areas()
 	for hit in hits:
 		hit.damage(damage)

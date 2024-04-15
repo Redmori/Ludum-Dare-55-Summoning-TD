@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfgf40iieq6m2"]
+[gd_scene load_steps=5 format=3 uid="uid://bfgf40iieq6m2"]
 
 [ext_resource type="Script" path="res://Scripts/attack_balrog.gd" id="1_h5n1x"]
 [ext_resource type="SpriteFrames" uid="uid://cbtyxuyuib3i" path="res://Resources/Demons/Animations/balrog_attack.tres" id="2_w0fh7"]
+[ext_resource type="AudioStream" uid="uid://c3oyt0brkxxnl" path="res://Sounds/breath.wav" id="3_0sgdw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0may"]
 size = Vector2(63, 14)
@@ -28,5 +29,9 @@ visible = false
 position = Vector2(32, 0)
 rotation = 1.5708
 sprite_frames = ExtResource("2_w0fh7")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_0sgdw")
+volume_db = -25.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

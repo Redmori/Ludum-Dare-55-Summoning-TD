@@ -24,7 +24,6 @@ func _ready():
 			tutorial.queue_free()
 		else:
 			tutorial.visible = true
-			
 
 func set_upgrades(upgr):
 	open_upgrades = upgr

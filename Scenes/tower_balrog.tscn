@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0ewap7n1lwrn"]
+[gd_scene load_steps=9 format=3 uid="uid://c0ewap7n1lwrn"]
 
 [ext_resource type="Script" path="res://Scripts/tower.gd" id="1_47gj2"]
 [ext_resource type="Texture2D" uid="uid://b7t1i6tlilnky" path="res://Sprites/pentagram.png" id="2_k08ty"]
 [ext_resource type="PackedScene" uid="uid://d4tojvsspd4j" path="res://Scenes/demon_balrog.tscn" id="3_6nsit"]
 [ext_resource type="Texture2D" uid="uid://e5uy1u7vte02" path="res://Sprites/balrog_sum.png" id="4_gm050"]
 [ext_resource type="AudioStream" uid="uid://cxvpx51s0es5r" path="res://Sounds/summon.wav" id="4_uem38"]
+[ext_resource type="AudioStream" uid="uid://medwmvd6dtxp" path="res://Sounds/place.wav" id="6_m1u5r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdkwq"]
 size = Vector2(32, 32)
@@ -76,6 +77,11 @@ volume_db = -20.0
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="AudioReady" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_m1u5r")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="input_event" from="Hell/Carrier" to="." method="_on_carrier_input_event"]
 [connection signal="input_event" from="Summon1" to="." method="_on_summon_1_input_event"]
