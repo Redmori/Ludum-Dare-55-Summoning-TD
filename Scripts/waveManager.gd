@@ -54,6 +54,7 @@ func check_done():
 
 func display_predictions():
 	if wave_number > waves.size():
+		$Victory.visible = true
 		return
 	if waves[wave_number - 1].path1_types.size() > 0:
 		$arrow_1.visible = true

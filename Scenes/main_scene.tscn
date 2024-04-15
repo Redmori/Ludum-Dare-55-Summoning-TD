@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://d2tjqqxwlvxhv"]
+[gd_scene load_steps=68 format=3 uid="uid://d2tjqqxwlvxhv"]
 
 [ext_resource type="Texture2D" uid="uid://cifodnot66paj" path="res://Sprites/tileset.png" id="1_fvcdt"]
 [ext_resource type="Script" path="res://Scripts/tile_map.gd" id="2_3ydf0"]
@@ -25,9 +25,12 @@
 [ext_resource type="Texture2D" uid="uid://dn5mi608q3sip" path="res://Sprites/cultist1.png" id="13_5krdy"]
 [ext_resource type="Texture2D" uid="uid://dqt0xqtb20v8n" path="res://Sprites/cultist3.png" id="13_btv12"]
 [ext_resource type="Texture2D" uid="uid://g75qoiioud13" path="res://Sprites/game_over2.png" id="13_cifyv"]
+[ext_resource type="Resource" uid="uid://cc5250l0cavrq" path="res://Resources/Waves/wave10.tres" id="14_dncw1"]
 [ext_resource type="Texture2D" uid="uid://bnj8mnlnr3d2f" path="res://Sprites/cultist2.png" id="14_rq8aa"]
 [ext_resource type="Texture2D" uid="uid://dblawom4c2fig" path="res://Sprites/mute.png" id="16_i6uom"]
 [ext_resource type="Script" path="res://Scripts/mute.gd" id="16_l8456"]
+[ext_resource type="Texture2D" uid="uid://ckr75tjkm2ahc" path="res://Sprites/victory.png" id="20_wdjpe"]
+[ext_resource type="AudioStream" uid="uid://cxa2llqtur4dd" path="res://Sounds/damage.wav" id="29_q5ii1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4dqkd"]
 texture = ExtResource("1_fvcdt")
@@ -334,7 +337,7 @@ shape = SubResource("RectangleShape2D_13hf6")
 
 [node name="WaveManager" type="Area2D" parent="."]
 script = ExtResource("5_qm1p7")
-waves = Array[Resource("res://Scripts/wave.gd")]([ExtResource("7_xmuvx"), ExtResource("7_wfsct"), ExtResource("7_8xhy7"), ExtResource("9_18jwd"), ExtResource("10_rj7vn"), ExtResource("11_1gjjo"), ExtResource("11_2uk2d"), ExtResource("12_tbsyd"), ExtResource("13_3cmca")])
+waves = Array[Resource("res://Scripts/wave.gd")]([ExtResource("7_xmuvx"), ExtResource("7_wfsct"), ExtResource("7_8xhy7"), ExtResource("9_18jwd"), ExtResource("10_rj7vn"), ExtResource("11_1gjjo"), ExtResource("11_2uk2d"), ExtResource("12_tbsyd"), ExtResource("13_3cmca"), ExtResource("14_dncw1")])
 
 [node name="Path1" type="Path2D" parent="WaveManager"]
 curve = SubResource("Curve2D_i0p7b")
@@ -425,6 +428,12 @@ position = Vector2(21, 247)
 texture = ExtResource("8_dmbaj")
 hframes = 5
 
+[node name="Victory" type="Sprite2D" parent="WaveManager"]
+visible = false
+z_index = 6
+position = Vector2(240, 144)
+texture = ExtResource("20_wdjpe")
+
 [node name="Base" type="Area2D" parent="." node_paths=PackedStringArray("cultist_sprites", "cultist4_anim", "cultist5_anim")]
 position = Vector2(240, 140)
 collision_layer = 0
@@ -481,6 +490,10 @@ flip_h = true
 visible = false
 z_index = 6
 texture = ExtResource("13_cifyv")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="Base"]
+stream = ExtResource("29_q5ii1")
+volume_db = -10.0
 
 [node name="Tutorial" type="Sprite2D" parent="."]
 position = Vector2(183, 23)

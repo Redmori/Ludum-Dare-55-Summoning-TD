@@ -8,5 +8,5 @@ script = ExtResource("1_t7fx7")
 name = "Fatty"
 texture = ExtResource("2_sgorg")
 speed = 10.0
-health = 300
-worth = 10
+health = 800
+worth = 4

@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("3_ygghm")
 duration = 15.0
-reward = 10
+reward = 0
 path1_types = Array[Resource]([])
 path1_amounts = Array[int]([])
 path2_types = Array[Resource]([ExtResource("1_uata4")])

@@ -10,19 +10,6 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-	#if targets.size() > 0:
-		#attack.set_target(targets[0])
-	#var enemies = get_overlapping_areas()
-	#if enemies: #TODO: make another node named attack (this can be carried in the demon resource, and call its attack function)
-		#for enemy in enemies:
-			##target the furthest enemy
-			#enemy.damage(delta*10)
-			
-
-
 func _on_area_entered(area):
 	if area.get_parent().line == line:
 		targets.append(area)

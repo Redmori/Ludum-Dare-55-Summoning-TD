@@ -1,7 +1,7 @@
 extends Area2D
 
 var target
-var speed = 1
+var speed = 150
 var damage
 var velocity = Vector2()
 
@@ -13,7 +13,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if target != null:
-		velocity = global_position.direction_to(target.global_position)*speed
+		velocity = global_position.direction_to(target.global_position)*speed*delta
 		translate(velocity)
 	else:
 		queue_free()

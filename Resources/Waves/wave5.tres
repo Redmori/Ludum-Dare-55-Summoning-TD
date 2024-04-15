@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_ng5x2")
 duration = 3.0
-reward = 10
+reward = 0
 path1_types = Array[Resource]([])
 path1_amounts = Array[int]([])
 path2_types = Array[Resource]([])

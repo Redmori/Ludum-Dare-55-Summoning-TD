@@ -1,18 +1,39 @@
-[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://b6f1a4p4vknpp"]
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://b6f1a4p4vknpp"]
 
 [ext_resource type="Texture2D" uid="uid://bk1l413jg8roo" path="res://Sprites/succubus.png" id="1_uq206"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f5kp4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xb7hs"]
 atlas = ExtResource("1_uq206")
 region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqe1s"]
+atlas = ExtResource("1_uq206")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydrag"]
+atlas = ExtResource("1_uq206")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wygdw"]
+atlas = ExtResource("1_uq206")
+region = Rect2(48, 0, 16, 32)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f5kp4")
+"texture": SubResource("AtlasTexture_xb7hs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqe1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydrag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wygdw")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 2.0
 }]

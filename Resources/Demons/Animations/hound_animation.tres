@@ -1,18 +1,25 @@
-[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://djqe6f325qj73"]
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://djqe6f325qj73"]
 
-[ext_resource type="Texture2D" uid="uid://chpvar3vli15r" path="res://Sprites/hellhound.png" id="1_emykb"]
+[ext_resource type="Texture2D" uid="uid://hwa14i6yda8b" path="res://Sprites/hound.png" id="1_r6rpj"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bm4bv"]
-atlas = ExtResource("1_emykb")
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0kic"]
+atlas = ExtResource("1_r6rpj")
 region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n424d"]
+atlas = ExtResource("1_r6rpj")
+region = Rect2(32, 0, 32, 16)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bm4bv")
+"texture": SubResource("AtlasTexture_n0kic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n424d")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 1.0
 }]

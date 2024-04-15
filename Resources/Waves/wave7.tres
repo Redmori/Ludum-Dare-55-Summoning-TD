@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("3_qd68p")
 duration = 15.0
-reward = 10
+reward = 0
 path1_types = Array[Resource]([ExtResource("1_ytpwc"), ExtResource("2_t1501")])
 path1_amounts = Array[int]([6, 6])
 path2_types = Array[Resource]([ExtResource("2_t1501"), ExtResource("1_ytpwc")])

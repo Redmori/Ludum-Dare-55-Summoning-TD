@@ -19,10 +19,11 @@ func _process(_delta):
 	pass
 
 func update_blood(amount):
-	$Sprite2D.frame = min($Sprite2D.hframes-1 ,amount/10)
+	$Sprite2D.frame = min($Sprite2D.hframes-1 ,amount/3)
 
 func _on_area_entered(area):
 	area.get_parent().queue_free()
+	$Audio.play()
 	var line_death = area.get_parent().line
 	if line_death == 0:
 		return

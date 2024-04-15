@@ -7,11 +7,11 @@
 
 [resource]
 script = ExtResource("2_gi5sd")
-duration = 15.0
-reward = 10
+duration = 20.0
+reward = 100
 path1_types = Array[Resource]([ExtResource("1_kyi2t"), ExtResource("2_qfagb"), ExtResource("3_ntdte")])
-path1_amounts = Array[int]([4, 10, 5])
+path1_amounts = Array[int]([5, 10, 5])
 path2_types = Array[Resource]([ExtResource("1_kyi2t"), ExtResource("2_qfagb"), ExtResource("3_ntdte")])
-path2_amounts = Array[int]([4, 5, 10])
+path2_amounts = Array[int]([5, 5, 10])
 path3_types = Array[Resource]([ExtResource("1_kyi2t"), ExtResource("2_qfagb"), ExtResource("3_ntdte")])
-path3_amounts = Array[int]([4, 8, 8])
+path3_amounts = Array[int]([5, 8, 8])

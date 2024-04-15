@@ -10,10 +10,6 @@ func _ready():
 	$Timer.wait_time = cooldown
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func set_target(new_target):
 	target = new_target
 
@@ -23,5 +19,4 @@ func _on_timer_timeout():
 		do_attack(target)
 
 func do_attack(targ):
-	#targ.damage(30
 	pass

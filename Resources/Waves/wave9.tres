@@ -6,10 +6,10 @@
 [resource]
 script = ExtResource("4_4r1a6")
 duration = 4.0
-reward = 10
+reward = 0
 path1_types = Array[Resource]([ExtResource("3_o87my")])
-path1_amounts = Array[int]([2])
+path1_amounts = Array[int]([3])
 path2_types = Array[Resource]([ExtResource("3_o87my")])
-path2_amounts = Array[int]([2])
+path2_amounts = Array[int]([3])
 path3_types = Array[Resource]([ExtResource("3_o87my")])
-path3_amounts = Array[int]([2])
+path3_amounts = Array[int]([3])
