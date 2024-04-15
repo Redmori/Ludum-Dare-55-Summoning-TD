@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://t41imtruyd3w"]
+[gd_scene load_steps=12 format=3 uid="uid://t41imtruyd3w"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_2vhl0"]
-[ext_resource type="Texture2D" uid="uid://delx3sw1fqp8p" path="res://Sprites/enemy.png" id="1_ps8ae"]
+[ext_resource type="Texture2D" uid="uid://c2vld4qqwp0kd" path="res://Sprites/enemy_anim.png" id="2_8xo00"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mbwyw"]
 
@@ -10,6 +10,49 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ly5y4"]
 bg_color = Color(0.870588, 0, 0, 1)
 corner_detail = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tumej"]
+atlas = ExtResource("2_8xo00")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dihtg"]
+atlas = ExtResource("2_8xo00")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xae0n"]
+atlas = ExtResource("2_8xo00")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdsld"]
+atlas = ExtResource("2_8xo00")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sdqy"]
+atlas = ExtResource("2_8xo00")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kxvex"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tumej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dihtg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xae0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdsld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sdqy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Enemy" type="Area2D"]
 collision_layer = 2
@@ -30,6 +73,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_ly5y4")
 value = 100.0
 show_percentage = false
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -7)
-texture = ExtResource("1_ps8ae")
+sprite_frames = SubResource("SpriteFrames_kxvex")
+autoplay = "default"

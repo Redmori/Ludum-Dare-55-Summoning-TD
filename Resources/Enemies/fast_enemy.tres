@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://c5hdi8wr2o3ue"]
 
 [ext_resource type="Script" path="res://Scripts/enemy_resource.gd" id="1_yi3c8"]
-[ext_resource type="Texture2D" uid="uid://c0ly8vkcf6oqa" path="res://Sprites/imp.png" id="2_gu53p"]
+[ext_resource type="SpriteFrames" uid="uid://bkn8ckfv7tao5" path="res://Resources/Enemies/Animations/dog_enemy_animation.tres" id="2_vd2lp"]
 
 [resource]
 script = ExtResource("1_yi3c8")
 name = "speedy"
-texture = ExtResource("2_gu53p")
+texture = ExtResource("2_vd2lp")
 speed = 60.0
-health = 10
+health = 30
 worth = 1

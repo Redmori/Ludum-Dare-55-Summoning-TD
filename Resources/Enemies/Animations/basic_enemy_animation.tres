@@ -1,0 +1,46 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://c2nsje8f7an2y"]
+
+[ext_resource type="Texture2D" uid="uid://c2vld4qqwp0kd" path="res://Sprites/enemy_anim.png" id="1_nui04"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25itv"]
+atlas = ExtResource("1_nui04")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shl70"]
+atlas = ExtResource("1_nui04")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22jqv"]
+atlas = ExtResource("1_nui04")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmndn"]
+atlas = ExtResource("1_nui04")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqwq3"]
+atlas = ExtResource("1_nui04")
+region = Rect2(64, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25itv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shl70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22jqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmndn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqwq3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
